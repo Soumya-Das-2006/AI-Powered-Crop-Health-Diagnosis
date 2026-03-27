@@ -118,13 +118,13 @@ The platform delivers **instant crop health analysis in under 5 seconds** and ac
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
 │  60%+ farmers wait 7–15 days  │  30–40% annual yield loss               │
-│  for a single crop diagnosis  │  from delayed expert intervention        │
+│  for a single crop diagnosis  │  from delayed expert intervention       │
 ├───────────────────────────────┼─────────────────────────────────────────┤
-│  ₹300–₹1,000 per soil test    │  1 expert for every 5,000 farmers        │
-│  + 10–20 day waiting period   │  in remote rural India                   │
+│  ₹300–₹1,000 per soil test    │  1 expert for every 5,000 farmers       │
+│  + 10–20 day waiting period   │  in remote rural India                  │
 ├───────────────────────────────┼─────────────────────────────────────────┤
-│  20–25% fertilizer wastage    │  No unified app — fragmented tools       │
-│  from lack of guidance        │  can't solve the full problem            │
+│  20–25% fertilizer wastage    │  No unified app — fragmented tools      │
+│  from lack of guidance        │  can't solve the full problem           │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -293,7 +293,7 @@ The platform uses a **multi-layer AI-driven smart farming architecture** with bi
 │  │ • Crop Diagnosis           │◄──►│ • Equipment & Supply Mgmt  │   │
 │  │ • Voice Assistant (STT/TTS)│    │ • Climate & Weather Monitor│   │
 │  │ • Virtual Mandi Access     │    │ • Analytics Dashboard      │   │
-│  │ • Sustainability Dashboard │    │ • Sustainability Monitoring │   │
+│  │ • Sustainability Dashboard │    │ • Sustainability Monitoring│   │
 │  └────────────────────────────┘    └────────────────────────────┘   │
 ├─────────────────────────────────────────────────────────────────────┤
 │                   CORE AI & BACKEND SERVICES                        │
@@ -899,7 +899,7 @@ Response 200:
 
 ```
 ┌──────────────────┬──────────────────┬──────────────────┬──────────────────┐
-│   📈 YIELD       │   🧪 FERTILIZER  │   💧 WATER       │   💰 COST        │
+│   📈 YIELD      │   🧪 FERTILIZER  │   💧 WATER       │   💰 COST       │
 │   IMPROVEMENT    │   REDUCTION      │   SAVINGS        │   REDUCTION      │
 │                  │                  │                  │                  │
 │   10–25%         │   20–25%         │   15–30%         │   15–20%         │
@@ -1061,7 +1061,6 @@ Phase 7  │  (24–36 months)  │  International expansion to South Asian mark
 - React Native: https://reactnative.dev
 - FastAPI: https://fastapi.tiangolo.com
 - MongoDB Atlas: https://www.mongodb.com/atlas
-- AWS Documentation: https://docs.aws.amazon.com
 - OpenWeatherMap: https://openweathermap.org/api
 
 ---
