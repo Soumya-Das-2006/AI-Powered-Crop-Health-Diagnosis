@@ -1096,6 +1096,6 @@ copies or substantial portions of the Software.
 
 *"Delivering expert-level agricultural intelligence to every farmer's smartphone."*
 
-**Team: The Sensing Squad &nbsp;|&nbsp; Leader: Soumya Das &nbsp;
+**Team: The Sensing Squad &nbsp;|&nbsp; Leader: Soumya Das **
 
 </div>
