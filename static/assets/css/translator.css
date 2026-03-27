@@ -1,0 +1,119 @@
+#topbar .language-select {
+  min-width: 180px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+#topbar .language-select option {
+  color: #111;
+}
+
+.mobile-language-control {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+.mobile-language-trigger {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-language-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.mobile-language-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  max-height: 360px;
+  overflow-y: auto;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: #122f22;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  display: none;
+  z-index: 1300;
+}
+
+.mobile-language-menu.show {
+  display: block;
+}
+
+.mobile-language-header {
+  color: #d6f3df;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 8px;
+}
+
+.mobile-language-option,
+.mobile-tts-btn {
+  width: 100%;
+  border: 0;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.9rem;
+}
+
+.mobile-language-option.active {
+  background: #1f6848;
+}
+
+.mobile-tts-btn {
+  justify-content: center;
+  gap: 8px;
+  margin-top: 6px;
+  margin-bottom: 0;
+}
+
+.translation-loading {
+  position: fixed;
+  top: 18px;
+  right: 18px;
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  gap: 8px;
+  background: #123524;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 30px;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.translation-loading.show {
+  display: inline-flex;
+}
+
+@media (max-width: 1199.98px) {
+  #topbar {
+    display: none;
+  }
+
+  .header .container-fluid {
+    gap: 8px;
+  }
+}

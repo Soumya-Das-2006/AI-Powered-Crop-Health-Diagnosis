@@ -1,0 +1,38 @@
+# ================================================
+# AI_Crop_Health — Requirements
+# ================================================
+# Python 3.12+ required
+# Install: pip install -r requirements.txt
+# ================================================
+
+# Django core
+django==4.2.17
+
+# Environment variables
+python-dotenv==1.0.1
+
+# Groq AI (for chatbot, crop map AI — fast & free)
+groq>=0.9.0
+
+# Weather API
+requests==2.32.3
+
+# Image processing
+Pillow==11.0.0
+opencv-python>=4.8.0
+
+# Numerical computing
+numpy>=1.26.0
+
+# Machine learning — crop & fertilizer models
+scikit-learn>=1.3.0
+
+# Machine learning — plant disease model (H5/TFLite)
+tensorflow>=2.16.0
+
+# Production server
+gunicorn>=21.2.0
+whitenoise>=6.5.0
+
+# PostgreSQL (uncomment when switching from SQLite)
+# psycopg2-binary==2.9.10
