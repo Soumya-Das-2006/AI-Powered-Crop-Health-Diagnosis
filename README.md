@@ -713,7 +713,7 @@ AWS_S3_BUCKET=your_s3_bucket_name
 AWS_REGION=ap-south-1
 
 # Database
-MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/agriculture
+MONGODB_URI=mongodb+srv://username:@cluster.mongodb.net/agriculture
 SQLITE_PATH=./offline/local.db
 
 # External APIs
