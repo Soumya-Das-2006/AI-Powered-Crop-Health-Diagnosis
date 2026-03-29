@@ -45,6 +45,14 @@
 
 </div>
 
+## 🎥 Project Demo
+
+Experience Camera-to-Decision AI in action:
+
+[![Watch the Demo](https://img.youtube.com/vi/63-Y-2M707Y/0.jpg)](https://youtu.be/63-Y-2M707Y)
+
+This demo showcases real-time crop diagnosis, AI-powered recommendations, and offline-first functionality.
+
 ---
 
 ## 📋 Table of Contents
