@@ -42,7 +42,7 @@
 > ### 📸 One Leaf Photo → 🤖 AI Analysis → ✅ Complete Farming Decision — in **Under 5 Seconds**
 
 <br/>
-**Live site:** [agricultureai.online](https://agricultureai.online)
+Live site: [agricultureai.online](https://agricultureai.online)
 </div>
 
 ## 🎥 Project Demo
