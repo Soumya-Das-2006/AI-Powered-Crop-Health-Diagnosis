@@ -41,6 +41,9 @@ urlpatterns = [
     # AgroLease app URLs
     path('agrolease/', include('agrolease.urls')),
 
+    # IoT sensor and field management URLs
+    path('iot/', include('iot_sensor.urls')),
+
     # Admin
     path('admin/', admin.site.urls),
 ]
