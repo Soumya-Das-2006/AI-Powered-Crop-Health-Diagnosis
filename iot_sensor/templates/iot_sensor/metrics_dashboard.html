@@ -1,0 +1,122 @@
+{% extends "layouts/layout.html" %}
+{% load static %}
+{% block title %}Evaluation Metrics — IoT Sensor{% endblock %}
+{% block content %}
+<div class="page-title dark-background" style="background-image: url({% static 'assets/img/page-title-bg.webp' %});">
+  <div class="container position-relative">
+    <h1>System Evaluation Metrics</h1>
+    <p>PDR · Alert Latency · Water Reduction · Uptime · Crop Accuracy · SUS Score</p>
+  </div>
+</div>
+<section class="section">
+<div class="container">
+
+  <!-- Live Computed Stats -->
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">Online Nodes</p>
+      <p class="text-2xl font-bold text-green-600">{{ online_nodes }}/{{ total_nodes }}</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">Alerts Today</p>
+      <p class="text-2xl font-bold text-red-600">{{ today_alerts }}</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">Alerts &lt;2 min</p>
+      <p class="text-2xl font-bold text-blue-600">{{ alerts_under_2min }}</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">Crop Accuracy</p>
+      <p class="text-2xl font-bold text-purple-600">{% if crop_accuracy %}{{ crop_accuracy }}%{% else %}—{% endif %}</p>
+    </div>
+    {% if latest %}
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">PDR (latest)</p>
+      <p class="text-2xl font-bold text-indigo-600">{% if latest.packet_delivery_ratio %}{{ latest.packet_delivery_ratio }}%{% else %}—{% endif %}</p>
+    </div>
+    <div class="bg-white rounded-lg shadow p-4 text-center">
+      <p class="text-xs text-gray-500 mb-1">SUS Score</p>
+      <p class="text-2xl font-bold text-yellow-600">{% if latest.sus_score %}{{ latest.sus_score }}{% else %}—{% endif %}</p>
+    </div>
+    {% endif %}
+  </div>
+
+  <!-- Metrics Log Table -->
+  <div class="bg-white rounded-lg shadow mb-8">
+    <div class="px-6 py-4 border-b">
+      <h2 class="text-xl font-semibold">Daily Metrics Log</h2>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-green-700 text-white">
+          <tr>
+            <th class="px-4 py-3 text-left">Date</th>
+            <th class="px-4 py-3 text-center">PDR %</th>
+            <th class="px-4 py-3 text-center">Avg Latency (s)</th>
+            <th class="px-4 py-3 text-center">Alerts &lt;2min %</th>
+            <th class="px-4 py-3 text-center">Water Reduction %</th>
+            <th class="px-4 py-3 text-center">Uptime %</th>
+            <th class="px-4 py-3 text-center">Crop Accuracy %</th>
+            <th class="px-4 py-3 text-center">SUS Score</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for log in logs %}
+          <tr class="{% cycle 'bg-white' 'bg-gray-50' %} border-b">
+            <td class="px-4 py-3 font-medium">{{ log.date|date:"d M Y" }}</td>
+            <td class="px-4 py-3 text-center">
+              {% if log.packet_delivery_ratio %}
+                <span class="{% if log.packet_delivery_ratio >= 95 %}text-green-600{% else %}text-red-600{% endif %} font-medium">{{ log.packet_delivery_ratio }}</span>
+              {% else %}—{% endif %}
+            </td>
+            <td class="px-4 py-3 text-center">
+              {% if log.avg_alert_latency_sec %}
+                <span class="{% if log.avg_alert_latency_sec <= 120 %}text-green-600{% else %}text-red-600{% endif %}">{{ log.avg_alert_latency_sec|floatformat:1 }}</span>
+              {% else %}—{% endif %}
+            </td>
+            <td class="px-4 py-3 text-center">{{ log.alerts_under_2min_pct|default:"—" }}</td>
+            <td class="px-4 py-3 text-center">
+              {% if log.water_reduction_pct %}
+                <span class="text-blue-600 font-medium">{{ log.water_reduction_pct }}%</span>
+              {% else %}—{% endif %}
+            </td>
+            <td class="px-4 py-3 text-center">
+              {% if log.server_uptime_pct %}
+                <span class="{% if log.server_uptime_pct >= 99 %}text-green-600{% else %}text-yellow-600{% endif %}">{{ log.server_uptime_pct }}%</span>
+              {% else %}—{% endif %}
+            </td>
+            <td class="px-4 py-3 text-center">{{ log.crop_pred_accuracy_pct|default:"—" }}</td>
+            <td class="px-4 py-3 text-center">
+              {% if log.sus_score %}
+                <span class="{% if log.sus_score >= 68 %}text-green-600{% elif log.sus_score >= 51 %}text-yellow-600{% else %}text-red-600{% endif %} font-medium">{{ log.sus_score }}</span>
+              {% else %}—{% endif %}
+            </td>
+          </tr>
+          {% empty %}
+          <tr><td colspan="8" class="text-center py-8 text-gray-500">No metrics data yet. Data populates daily via the system metrics management command.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Metric Targets Reference -->
+  <div class="bg-white rounded-lg shadow p-6">
+    <h3 class="font-semibold text-gray-800 mb-4">Proposal Evaluation Targets</h3>
+    <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+      <div class="bg-green-50 rounded p-3"><span class="font-medium text-green-800">PDR Target:</span><br>≥ 95%</div>
+      <div class="bg-blue-50 rounded p-3"><span class="font-medium text-blue-800">Alert Latency Target:</span><br>&lt; 2 minutes (120 s)</div>
+      <div class="bg-purple-50 rounded p-3"><span class="font-medium text-purple-800">Crop Accuracy Target:</span><br>≥ 85% (k-fold CV)</div>
+      <div class="bg-yellow-50 rounded p-3"><span class="font-medium text-yellow-800">Water Reduction Target:</span><br>15–30% vs manual</div>
+      <div class="bg-indigo-50 rounded p-3"><span class="font-medium text-indigo-800">System Uptime Target:</span><br>≥ 99%</div>
+      <div class="bg-orange-50 rounded p-3"><span class="font-medium text-orange-800">SUS Score Target:</span><br>≥ 68 (Good usability)</div>
+    </div>
+  </div>
+
+  <div class="mt-6">
+    <a href="{% url 'iot_sensor:field_dashboard' %}" class="text-green-600 hover:text-green-700 font-medium">← Back to Field Dashboard</a>
+  </div>
+
+</div>
+</section>
+{% endblock %}
