@@ -73,6 +73,7 @@ INSTALLED_APPS = [
     "features",
     "marketplace",
     "agrolease",
+    "iot_sensor",
 ]
 
 # ======================================================
